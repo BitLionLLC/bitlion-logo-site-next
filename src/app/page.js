@@ -2,7 +2,6 @@
 
 import logoGif from './assets/logo.gif';
 import { useRef, useEffect, useState } from 'react';
-import './App.css';
 import Support from './components/Support';
 import Image from 'next/image';
 import Link from 'next/link';
