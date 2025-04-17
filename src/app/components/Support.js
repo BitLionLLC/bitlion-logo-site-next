@@ -54,8 +54,8 @@ function Support() {
 
   return (
     <div className='w-full h-full flex items-center justify-center'>
-        <div className="support-container">
-        <h1>App Store Support</h1>
+        <div className="support-container w-[800px]">
+        <h1 className='font-bold text-2xl'>App Store Support</h1>
         {error && <div className="error-message">{error}</div>}
         {success && <div className="success-message">Thank you for your message. We will get back to you soon!</div>}
         <form onSubmit={handleSubmit} className="support-form">
