@@ -72,11 +72,22 @@ export default function Home() {
   const Navigation = () => {
     const pathname = usePathname();
     return (
-      <nav className="support-nav" style={{ position: "fixed"}}>
-        {pathname === '/support' ? (
-          <Link href="/" className="support-link">Home</Link>
+      <nav className="support-nav" style={{ position: "fixed", display: "flex", gap: "0.5rem"}}>
+        {pathname === '/' ? (
+          <>
+            <Link href="/apps" className="support-link">Our Apps</Link>
+            <Link href="/support" className="support-link">Support</Link>
+          </>
+        ) : pathname === '/support' ? (
+          <>
+            <Link href="/" className="support-link">Home</Link>
+            <Link href="/apps" className="support-link">Our Apps</Link>
+          </>
         ) : (
-          <Link href="/support" className="support-link">App Store Support</Link>
+          <>
+            <Link href="/" className="support-link">Home</Link>
+            <Link href="/support" className="support-link">Support</Link>
+          </>
         )}
       </nav>
     );
