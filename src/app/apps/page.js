@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import plantIdImage from '../assets/plantId.png';
 import appStoreBadge from '../assets/app_store.svg';
+import googlePlayBadge from '../assets/google_play.png';
 import logoGif from '../assets/logo.gif';
 
 export default function AppsPage() {
@@ -95,6 +96,15 @@ export default function AppsPage() {
                       width={150} 
                       height={50}
                       className="h-12 w-auto"
+                    />
+                  </a>
+                  <a href="https://play.google.com/store/apps/details?id=com.thebitlion.plantidentifierflutter" className="inline-block transform hover:scale-105 transition-transform duration-200">
+                    <Image 
+                      src={googlePlayBadge} 
+                      alt="Get it on Google Play" 
+                      width={150} 
+                      height={50}
+                      className="h-12 w-auto ml-4"
                     />
                   </a>
                 </div>
