@@ -77,16 +77,25 @@ export default function Home() {
           <>
             <Link href="/apps" className="support-link">Our Apps</Link>
             <Link href="/support" className="support-link">Support</Link>
+            <Link href="/privacy" className="support-link">Privacy</Link>
           </>
         ) : pathname === '/support' ? (
           <>
             <Link href="/" className="support-link">Home</Link>
             <Link href="/apps" className="support-link">Our Apps</Link>
+            <Link href="/privacy" className="support-link">Privacy</Link>
+          </>
+        ) : pathname === '/privacy' ? (
+          <>
+            <Link href="/" className="support-link">Home</Link>
+            <Link href="/apps" className="support-link">Our Apps</Link>
+            <Link href="/support" className="support-link">Support</Link>
           </>
         ) : (
           <>
             <Link href="/" className="support-link">Home</Link>
             <Link href="/support" className="support-link">Support</Link>
+            <Link href="/privacy" className="support-link">Privacy</Link>
           </>
         )}
       </nav>

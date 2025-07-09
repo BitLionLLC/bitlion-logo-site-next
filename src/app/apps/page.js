@@ -11,8 +11,10 @@ export default function AppsPage() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Navigation */}
-      <nav className="support-nav" style={{ position: "fixed"}}>
+      <nav className="support-nav" style={{ position: "fixed", display: "flex", gap: "0.5rem"}}>
         <Link href="/" className="support-link">Home</Link>
+        <Link href="/support" className="support-link">Support</Link>
+        <Link href="/privacy" className="support-link">Privacy</Link>
       </nav>
 
       {/* Main Content */}
