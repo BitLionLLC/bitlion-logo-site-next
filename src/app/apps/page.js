@@ -14,8 +14,10 @@ export default function AppsPage() {
       {/* Navigation */}
       <nav className="support-nav" style={{ position: "fixed", display: "flex", gap: "0.5rem"}}>
         <Link href="/" className="support-link">Home</Link>
+        <Link href="/tt" className="support-link">Feed Publisher</Link>
         <Link href="/support" className="support-link">Support</Link>
         <Link href="/privacy" className="support-link">Privacy</Link>
+        <Link href="/terms" className="support-link">Terms</Link>
       </nav>
 
       {/* Main Content */}

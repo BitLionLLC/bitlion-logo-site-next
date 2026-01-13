@@ -76,26 +76,51 @@ export default function Home() {
         {pathname === '/' ? (
           <>
             <Link href="/apps" className="support-link">Our Apps</Link>
+            <Link href="/tt" className="support-link">Feed Publisher</Link>
             <Link href="/support" className="support-link">Support</Link>
             <Link href="/privacy" className="support-link">Privacy</Link>
+            <Link href="/terms" className="support-link">Terms</Link>
           </>
         ) : pathname === '/support' ? (
           <>
             <Link href="/" className="support-link">Home</Link>
             <Link href="/apps" className="support-link">Our Apps</Link>
+            <Link href="/tt" className="support-link">Feed Publisher</Link>
             <Link href="/privacy" className="support-link">Privacy</Link>
+            <Link href="/terms" className="support-link">Terms</Link>
           </>
         ) : pathname === '/privacy' ? (
           <>
             <Link href="/" className="support-link">Home</Link>
             <Link href="/apps" className="support-link">Our Apps</Link>
+            <Link href="/tt" className="support-link">Feed Publisher</Link>
             <Link href="/support" className="support-link">Support</Link>
+            <Link href="/terms" className="support-link">Terms</Link>
+          </>
+        ) : pathname === '/terms' ? (
+          <>
+            <Link href="/" className="support-link">Home</Link>
+            <Link href="/apps" className="support-link">Our Apps</Link>
+            <Link href="/tt" className="support-link">Feed Publisher</Link>
+            <Link href="/support" className="support-link">Support</Link>
+            <Link href="/privacy" className="support-link">Privacy</Link>
+          </>
+        ) : pathname === '/tt' ? (
+          <>
+            <Link href="/" className="support-link">Home</Link>
+            <Link href="/apps" className="support-link">Our Apps</Link>
+            <Link href="/support" className="support-link">Support</Link>
+            <Link href="/privacy" className="support-link">Privacy</Link>
+            <Link href="/terms" className="support-link">Terms</Link>
           </>
         ) : (
           <>
             <Link href="/" className="support-link">Home</Link>
+            <Link href="/apps" className="support-link">Our Apps</Link>
+            <Link href="/tt" className="support-link">Feed Publisher</Link>
             <Link href="/support" className="support-link">Support</Link>
             <Link href="/privacy" className="support-link">Privacy</Link>
+            <Link href="/terms" className="support-link">Terms</Link>
           </>
         )}
       </nav>
