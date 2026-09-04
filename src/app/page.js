@@ -76,7 +76,6 @@ export default function Home() {
         {pathname === '/' ? (
           <>
             <Link href="/apps" className="support-link">Our Apps</Link>
-            <Link href="/tt" className="support-link">Feed Publisher</Link>
             <Link href="/support" className="support-link">Support</Link>
             <Link href="/privacy" className="support-link">Privacy</Link>
             <Link href="/terms" className="support-link">Terms</Link>
@@ -85,7 +84,6 @@ export default function Home() {
           <>
             <Link href="/" className="support-link">Home</Link>
             <Link href="/apps" className="support-link">Our Apps</Link>
-            <Link href="/tt" className="support-link">Feed Publisher</Link>
             <Link href="/privacy" className="support-link">Privacy</Link>
             <Link href="/terms" className="support-link">Terms</Link>
           </>
@@ -93,7 +91,6 @@ export default function Home() {
           <>
             <Link href="/" className="support-link">Home</Link>
             <Link href="/apps" className="support-link">Our Apps</Link>
-            <Link href="/tt" className="support-link">Feed Publisher</Link>
             <Link href="/support" className="support-link">Support</Link>
             <Link href="/terms" className="support-link">Terms</Link>
           </>
@@ -101,23 +98,13 @@ export default function Home() {
           <>
             <Link href="/" className="support-link">Home</Link>
             <Link href="/apps" className="support-link">Our Apps</Link>
-            <Link href="/tt" className="support-link">Feed Publisher</Link>
             <Link href="/support" className="support-link">Support</Link>
             <Link href="/privacy" className="support-link">Privacy</Link>
-          </>
-        ) : pathname === '/tt' ? (
-          <>
-            <Link href="/" className="support-link">Home</Link>
-            <Link href="/apps" className="support-link">Our Apps</Link>
-            <Link href="/support" className="support-link">Support</Link>
-            <Link href="/privacy" className="support-link">Privacy</Link>
-            <Link href="/terms" className="support-link">Terms</Link>
           </>
         ) : (
           <>
             <Link href="/" className="support-link">Home</Link>
             <Link href="/apps" className="support-link">Our Apps</Link>
-            <Link href="/tt" className="support-link">Feed Publisher</Link>
             <Link href="/support" className="support-link">Support</Link>
             <Link href="/privacy" className="support-link">Privacy</Link>
             <Link href="/terms" className="support-link">Terms</Link>
@@ -132,7 +119,7 @@ export default function Home() {
   }
 
   return (
-    <div className="App">
+    <div className="App home-scroll">
       <Navigation />
       <MainContent />
     </div>

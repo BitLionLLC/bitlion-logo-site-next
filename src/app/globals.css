@@ -25,7 +25,6 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
-  height: 500vh;
   margin: 0;
   background-color: black;
 }
@@ -49,6 +48,14 @@ svg {
   text-align: center;
   position: relative;
   min-height: 100vh;
+}
+
+/* Scroll runway for the home page line animation, which draws the SVG path
+   as a percentage of how far down the document you have scrolled. Scoped to
+   the home page — as a rule on `body` it gave every other page five
+   viewports of empty scroll below its content. Must outrank `.App` above. */
+.App.home-scroll {
+  min-height: 500vh;
 }
 
 .support-nav {

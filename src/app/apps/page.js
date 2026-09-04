@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import plantIdImage from '../assets/plantId.png';
-import astralTarotImage from '../assets/astralTarot.png';
+import slowpulseImage from '../assets/slowpulse.png';
 import appStoreBadge from '../assets/app_store.svg';
 import googlePlayBadge from '../assets/google_play.png';
 import logoGif from '../assets/logo.gif';
@@ -14,7 +14,6 @@ export default function AppsPage() {
       {/* Navigation */}
       <nav className="support-nav" style={{ position: "fixed", display: "flex", gap: "0.5rem"}}>
         <Link href="/" className="support-link">Home</Link>
-        <Link href="/tt" className="support-link">Feed Publisher</Link>
         <Link href="/support" className="support-link">Support</Link>
         <Link href="/privacy" className="support-link">Privacy</Link>
         <Link href="/terms" className="support-link">Terms</Link>
@@ -103,15 +102,17 @@ export default function AppsPage() {
                       className="h-12 w-auto"
                     />
                   </a>
+                  {/*
                   <a href="https://play.google.com/store/apps/details?id=com.thebitlion.plantidentifierflutter" className="inline-block transform hover:scale-105 transition-transform duration-200">
-                    <Image 
-                      src={googlePlayBadge} 
-                      alt="Get it on Google Play" 
-                      width={150} 
+                    <Image
+                      src={googlePlayBadge}
+                      alt="Get it on Google Play"
+                      width={150}
                       height={50}
                       className="h-12 w-auto ml-4"
                     />
                   </a>
+                  */}
                 </div>
               </div>
             </div>
@@ -122,15 +123,13 @@ export default function AppsPage() {
               {/* App Screenshot */}
               <div className="order-2 md:order-1">
                 <div className="relative mx-auto max-w-sm">
-                    <a href="https://apps.apple.com/us/app/budget-plant-id/id6747782540" target="_blank">
-                        <Image 
-                            src={astralTarotImage} 
-                            alt="Budget Plant ID App Screenshot" 
-                            className="rounded-2xl shadow-2xl"
-                            width={300}
-                            height={600}
-                        />
-                    </a>
+                    <Image 
+                        src={slowpulseImage} 
+                        alt="SlowPulse App Screenshot" 
+                        className="rounded-2xl shadow-2xl"
+                        width={300}
+                        height={600}
+                    />
                   {/* Glow effect */}
                   <div className="absolute inset-0 rounded-2xl opacity-20 blur-xl pointer-events-none"></div>
                 </div>
@@ -138,11 +137,16 @@ export default function AppsPage() {
 
               {/* App Info */}
               <div className="order-1 md:order-2 text-center md:text-left">
+                <div className="flex justify-center md:justify-start mb-4">
+                  <span className="inline-block px-3 py-1 text-sm font-semibold rounded-full bg-[#33F0CE]/10 text-[#33F0CE] border border-[#33F0CE]/40">
+                    Coming Soon
+                  </span>
+                </div>
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-                  Astral Tarot Reader
+                  SlowPulse
                 </h2>
                 <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-                  Receive guidance from the Universe with the help of the Tarot!
+                  Impulse buys and endless scrolling start with a single tap. SlowPulse steps in right before it — a short pause, a question worth answering, and a record of every time you chose differently.
                 </p>
                 
                 {/* Features */}
@@ -151,38 +155,32 @@ export default function AppsPage() {
                   <ul className="space-y-2 text-gray-300">
                     <li className="flex items-center">
                       <span className="w-2 h-2 bg-[#33F0CE] rounded-full mr-3"></span>
-                      Upload a photo from your gallery or camera for a reading
+                      A pause screen before you open the apps you choose to guard
                     </li>
                     <li className="flex items-center">
                       <span className="w-2 h-2 bg-[#33F0CE] rounded-full mr-3"></span>
-                      Or do a random reading
+                      Tailored prompts for shopping, food delivery, and social
                     </li>
                     <li className="flex items-center">
                       <span className="w-2 h-2 bg-[#33F0CE] rounded-full mr-3"></span>
-                      Deep insights into your questions
+                      See purchases paused, opens avoided, and money not spent
                     </li>
                     <li className="flex items-center">
                       <span className="w-2 h-2 bg-[#33F0CE] rounded-full mr-3"></span>
-                      1, 3, 4, and 10 card spreads
+                      Your data stays on your device — syncing is optional
                     </li>
                     <li className="flex items-center">
                       <span className="w-2 h-2 bg-[#33F0CE] rounded-full mr-3"></span>
-                      No expensive subscription!
+                      Coming to iOS and Android
                     </li>
                   </ul>
                 </div>
 
-                {/* App Store Badge */}
+                {/* Store badges to be added at launch */}
                 <div className="flex justify-center md:justify-start">
-                  <a href="https://play.google.com/store/apps/details?id=com.thebitlion.astraltarotreader" className="inline-block transform hover:scale-105 transition-transform duration-200">
-                    <Image 
-                      src={googlePlayBadge} 
-                      alt="Get it on Google Play" 
-                      width={150} 
-                      height={50}
-                      className="h-12 w-auto"
-                    />
-                  </a>
+                  <p className="text-gray-400">
+                    Launching soon on the App Store and Google Play.
+                  </p>
                 </div>
               </div>
             </div>
@@ -201,4 +199,4 @@ export default function AppsPage() {
       </div>
     </div>
   );
-} 
+}
