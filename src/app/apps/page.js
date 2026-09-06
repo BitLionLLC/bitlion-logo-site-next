@@ -123,13 +123,15 @@ export default function AppsPage() {
               {/* App Screenshot */}
               <div className="order-2 md:order-1">
                 <div className="relative mx-auto max-w-sm">
-                    <Image 
-                        src={slowpulseImage} 
-                        alt="SlowPulse App Screenshot" 
-                        className="rounded-2xl shadow-2xl"
-                        width={300}
-                        height={600}
-                    />
+                    <a href="https://www.slowpulse.app" target="_blank">
+                        <Image 
+                            src={slowpulseImage} 
+                            alt="SlowPulse App Screenshot" 
+                            className="rounded-2xl shadow-2xl"
+                            width={300}
+                            height={600}
+                        />
+                    </a>
                   {/* Glow effect */}
                   <div className="absolute inset-0 rounded-2xl opacity-20 blur-xl pointer-events-none"></div>
                 </div>
@@ -143,7 +145,9 @@ export default function AppsPage() {
                   </span>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-                  SlowPulse
+                  <a href="https://www.slowpulse.app" target="_blank" className="hover:text-[#33F0CE] transition-colors duration-200">
+                    SlowPulse
+                  </a>
                 </h2>
                 <p className="text-lg text-gray-300 mb-6 leading-relaxed">
                   Impulse buys and endless scrolling start with a single tap. SlowPulse steps in right before it — a short pause, a question worth answering, and a record of every time you chose differently.
@@ -179,7 +183,10 @@ export default function AppsPage() {
                 {/* Store badges to be added at launch */}
                 <div className="flex justify-center md:justify-start">
                   <p className="text-gray-400">
-                    Launching soon on the App Store and Google Play.
+                    Launching soon on the App Store and Google Play. Learn more at{' '}
+                    <a href="https://www.slowpulse.app" target="_blank" className="text-[#33F0CE] hover:underline">
+                      slowpulse.app
+                    </a>.
                   </p>
                 </div>
               </div>
