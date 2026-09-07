@@ -58,7 +58,9 @@ export default function AppsPage() {
               {/* App Info */}
               <div className="order-1 md:order-2 text-center md:text-left">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-                  Budget Plant ID
+                  <a href="https://www.budgetplantid.com/" target="_blank" className="hover:text-[#33F0CE] transition-colors duration-200">
+                    Budget Plant ID
+                  </a>
                 </h2>
                 <p className="text-lg text-gray-300 mb-6 leading-relaxed">
                   Your pocket-sized plant identification companion! Snap a photo of any plant and get instant, accurate identification powered by advanced AI technology.
@@ -114,6 +116,12 @@ export default function AppsPage() {
                   </a>
                   */}
                 </div>
+                <p className="text-gray-400 mt-4">
+                  Learn more at{' '}
+                  <a href="https://www.budgetplantid.com/" target="_blank" className="text-[#33F0CE] hover:underline">
+                    budgetplantid.com
+                  </a>.
+                </p>
               </div>
             </div>
           </div>
