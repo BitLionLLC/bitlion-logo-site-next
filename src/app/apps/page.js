@@ -147,11 +147,6 @@ export default function AppsPage() {
 
               {/* App Info */}
               <div className="order-1 md:order-2 text-center md:text-left">
-                <div className="flex justify-center md:justify-start mb-4">
-                  <span className="inline-block px-3 py-1 text-sm font-semibold rounded-full bg-[#33F0CE]/10 text-[#33F0CE] border border-[#33F0CE]/40">
-                    Coming Soon
-                  </span>
-                </div>
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
                   <a href="https://www.slowpulse.app" target="_blank" className="hover:text-[#33F0CE] transition-colors duration-200">
                     SlowPulse
@@ -183,20 +178,29 @@ export default function AppsPage() {
                     </li>
                     <li className="flex items-center">
                       <span className="w-2 h-2 bg-[#33F0CE] rounded-full mr-3"></span>
-                      Coming to iOS and Android
+                      Available on iOS, with Android coming soon
                     </li>
                   </ul>
                 </div>
 
-                {/* Store badges to be added at launch */}
+                {/* App Store Badge */}
                 <div className="flex justify-center md:justify-start">
-                  <p className="text-gray-400">
-                    Launching soon on the App Store and Google Play. Learn more at{' '}
-                    <a href="https://www.slowpulse.app" target="_blank" className="text-[#33F0CE] hover:underline">
-                      slowpulse.app
-                    </a>.
-                  </p>
+                  <a href="https://apps.apple.com/us/app/slowpulse/id6804510242" target="_blank" className="inline-block transform hover:scale-105 transition-transform duration-200">
+                    <Image 
+                      src={appStoreBadge} 
+                      alt="Download on the App Store" 
+                      width={150} 
+                      height={50}
+                      className="h-12 w-auto"
+                    />
+                  </a>
                 </div>
+                <p className="text-gray-400 mt-4">
+                  Learn more at{' '}
+                  <a href="https://www.slowpulse.app" target="_blank" className="text-[#33F0CE] hover:underline">
+                    slowpulse.app
+                  </a>.
+                </p>
               </div>
             </div>
           </div>
