@@ -50,10 +50,10 @@ export default function PrivacyPage() {
             border: "1px solid #333"
           }}>
             <p style={{ marginBottom: "1rem" }}>
-              This Privacy Policy describes how BitLion, LLC ("we", "us", or "our") collects, uses, and protects your information when you use our mobile applications (each, an "App").
+              This Privacy Policy describes how BitLion, LLC ("we", "us", or "our") collects, uses, and protects your information when you use our mobile applications, browser extensions, and web services (each, an "App").
             </p>
             <p style={{ marginBottom: "1rem" }}>
-              It applies to all of the apps we publish, including Budget Plant ID and SlowPulse. Where a particular App handles data differently, that difference is called out in the <strong>App-Specific Disclosures</strong> section below.
+              It applies to everything we publish — our mobile apps, our browser extensions, and our web services — including Auto Dark Mode, Budget Plant ID, Med Minder, Mostlink, and SlowPulse. Where a particular App handles data differently, that difference is called out in the <strong>App-Specific Disclosures</strong> section below.
             </p>
             <p style={{ marginBottom: "1rem" }}>
               Our general approach is to keep your data on your device wherever we can, to send it off the device only when a feature you asked for requires it, and never to sell it.
@@ -148,10 +148,13 @@ export default function PrivacyPage() {
             </p>
             <ul style={{ marginLeft: "2rem", marginBottom: "1rem" }}>
               <li><strong>Plant.id:</strong> Image recognition for plant identification and plant health diagnosis (Budget Plant ID only)</li>
-              <li><strong>Clerk:</strong> Optional account sign-in and authentication (SlowPulse only)</li>
-              <li><strong>Convex:</strong> Backup and cross-device sync of your data for signed-in users (SlowPulse only)</li>
+              <li><strong>Clerk:</strong> Optional account sign-in and authentication (SlowPulse and Med Minder)</li>
+              <li><strong>Convex:</strong> Storage, backup, and cross-device sync of your data (SlowPulse and Med Minder for signed-in users; Mostlink for your account and pages)</li>
+              <li><strong>Google AdMob:</strong> Serving banner ads in the free, ad-supported tier (Med Minder only)</li>
               <li><strong>RevenueCat:</strong> Managing purchases, subscriptions, and restoring entitlements</li>
-              <li><strong>Apple App Store / Google Play:</strong> Payment processing and billing</li>
+              <li><strong>Stripe:</strong> Subscription billing and payment processing (Mostlink only)</li>
+              <li><strong>ExtensionPay:</strong> Subscription billing and payment processing for our browser extensions (Auto Dark Mode only)</li>
+              <li><strong>Apple App Store / Google Play:</strong> Payment processing and billing for our mobile apps</li>
             </ul>
             <p style={{ marginBottom: "1rem" }}>
               We share data with these services only as necessary to provide the App&apos;s functionality. Each service handles the data it receives under its own privacy policy. We do not sell your personal data to third parties.
@@ -174,6 +177,22 @@ export default function PrivacyPage() {
             border: "1px solid #333"
           }}>
             <h3 style={{ color: "#33F0CE", fontSize: "1.3rem", marginBottom: "0.75rem" }}>
+              Auto Dark Mode (Browser Extension)
+            </h3>
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Access to the Pages You Visit:</strong> Auto Dark Mode needs permission to run on the sites you browse so it can tell whether a page is already dark and, if it is not, restyle its colors. All of that work happens inside your browser, on the page in front of you. The extension does not read, log, or transmit the contents of the pages you visit, anything you type into them, or your browsing history.
+            </p>
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Your Settings:</strong> Your on/off switch, the list of sites you have enabled dark mode for, and the count of sites used on the free tier are saved in your browser&apos;s own extension storage. If you are signed into your browser, they sync between your devices through your browser account; they are not sent to us.
+            </p>
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Subscription:</strong> Payment is handled by ExtensionPay, a third-party payment service for browser extensions. Your email address and payment details go to ExtensionPay and its payment processor, not to us, and we never see or store your payment card information. The extension itself stores only whether your subscription is active.
+            </p>
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>No Account, No Analytics:</strong> Auto Dark Mode does not require you to create an account with us, and it contains no analytics or advertising trackers.
+            </p>
+
+            <h3 style={{ color: "#33F0CE", fontSize: "1.3rem", marginTop: "2rem", marginBottom: "0.75rem" }}>
               Budget Plant ID
             </h3>
             <p style={{ marginBottom: "1rem" }}>
@@ -187,6 +206,50 @@ export default function PrivacyPage() {
             </p>
             <p style={{ marginBottom: "1rem" }}>
               <strong>No Account Required:</strong> Budget Plant ID does not require you to create an account, and we do not collect your name or email address to use it.
+            </p>
+
+            <h3 style={{ color: "#33F0CE", fontSize: "1.3rem", marginTop: "2rem", marginBottom: "0.75rem" }}>
+              Med Minder
+            </h3>
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Health Information You Enter:</strong> Med Minder stores what you choose to enter about your medications — name, dosage, any notes, the times and days you take them — along with a log of the doses you mark as taken or skipped. We treat this as sensitive information. It is used only to show you your own schedule, reminders, and adherence statistics.
+            </p>
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Using It Without an Account:</strong> You can use Med Minder without signing in. In that case your medications and dose history are stored only on your device. If you later sign in, the data already on your device is moved into your account so you do not lose it.
+            </p>
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Accounts and Sync:</strong> Signing in is optional and is handled by Clerk (with Apple, Google, or an email address). Your medications and dose history are then stored in our Convex backend against your account so they follow you to a new device. We receive the basic profile information your sign-in method provides — typically an email address, a user identifier, and, where you have one, a name and profile image.
+            </p>
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Reminders:</strong> Dose reminders are local notifications scheduled by your own device, so they arrive on time without a connection. Scheduling them does not send anything to us, and the notification content stays on your device.
+            </p>
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Advertising:</strong> The free version of Med Minder shows banner ads served by Google AdMob. AdMob may use a device advertising identifier and similar ad-serving information, subject to the advertising and tracking settings on your device. We never share your medications, dose history, or any other health information with AdMob or any other advertiser. A one-time in-app purchase removes ads; purchases and ad-performance reporting are managed through RevenueCat, which receives no health information.
+            </p>
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Deleting Your Data:</strong> You can delete your account from within the App&apos;s settings, which removes your medications and dose history from our backend. Deleting the App removes anything held only on your device.
+            </p>
+
+            <h3 style={{ color: "#33F0CE", fontSize: "1.3rem", marginTop: "2rem", marginBottom: "0.75rem" }}>
+              Mostlink (Web Service)
+            </h3>
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Your Account:</strong> Mostlink requires an account. We store your username, email address, and optionally your name, plus a securely hashed version of your password — we never store your password itself. If you sign in with Google, we store the account identity Google provides instead.
+            </p>
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>The Pages You Publish:</strong> The content of the link pages you build — titles, links, colors, and any images you upload — is stored in our backend and is published publicly at the address you choose. Please do not put anything on a page that you do not want to be publicly visible. If you connect a custom domain, we also store that domain name and its DNS configuration status.
+            </p>
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Visitor Analytics:</strong> When someone views one of your published pages or clicks one of its links, we record the event so we can show you your own page statistics. We record the page or link involved, a time, the broad device category (desktop, mobile, or tablet), and the referring site where the browser reports one. We do not store visitors&apos; IP addresses, we do not set tracking cookies on visitors, and these events are not used to identify individual visitors or to build advertising profiles.
+            </p>
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Cookies:</strong> Mostlink sets a cookie when you sign in, so your session is remembered, and uses a security token to protect forms against cross-site request forgery. These are necessary for the service to work and are not used for advertising.
+            </p>
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Payments:</strong> Paid plans and additional sites are billed through Stripe. Stripe handles your payment details directly; we store only your Stripe customer and subscription identifiers and whether your subscription is active. We never see or store your payment card information.
+            </p>
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Email:</strong> We send transactional email — address verification, password resets, and support replies — to the address on your account.
             </p>
 
             <h3 style={{ color: "#33F0CE", fontSize: "1.3rem", marginTop: "2rem", marginBottom: "0.75rem" }}>
