@@ -1,127 +1,168 @@
-'use client'
-
-import logoGif from './assets/logo.gif';
-import { useRef, useEffect, useState } from 'react';
-import Support from './components/Support';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import logoGif from './assets/logo.gif';
+import ScrollLine from './components/ScrollLine';
+import SiteNav from './components/SiteNav';
+import {
+  CONTACT_EMAIL,
+  SERVICES,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  buildMetadata,
+} from './lib/site';
+
+export const metadata = {
+  ...buildMetadata({
+    title: `${SITE_NAME} — App, Web, and Browser Extension Developers`,
+    description: SITE_DESCRIPTION,
+    path: '/',
+  }),
+  // The home page carries the full brand name, so opt out of the layout's
+  // "%s | BitLion" title template.
+  title: {
+    absolute: `${SITE_NAME} — App, Web, and Browser Extension Developers`,
+  },
+};
 
 export default function Home() {
-  const pathRef = useRef(null);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-    
-    const onScroll = () => {
-      const path = pathRef.current;
-      if (!path) return;
-
-      // Only show the path when scrolling has started
-      if (window.scrollY > 0) {
-        pathRef.current.style.visibility = 'visible';
-      } else {
-        pathRef.current.style.visibility = 'hidden';
-      }
-
-      const pathLength = path.getTotalLength();
-
-      path.style.strokeDasharray = pathLength + ' ' + pathLength;
-      path.style.strokeDashoffset = pathLength;
-
-      // Calculate scroll percentage using window properties
-      const scrollTop = window.scrollY;
-      const scrollHeight = window.document.documentElement.scrollHeight;
-      const clientHeight = window.document.documentElement.clientHeight;
-      
-      const scrollPercentage = scrollTop / (scrollHeight - clientHeight);
-      const drawLength = pathLength * scrollPercentage;
-
-      path.style.strokeDashoffset = pathLength - drawLength;
-    };
-
-    // Initially hide the path
-    if (pathRef.current) {
-      pathRef.current.style.visibility = 'hidden';
-    }
-
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  const MainContent = () => (
-    <>
-      <div style={{ width: "100vw", height: "100vh", display: "flex", justifyContent: "center", alignItems: "center", position: "fixed"}}>
-        <Image src={logoGif} alt='logo' />
-      </div>
-      <div className="line-container">
-        <svg viewBox="0 0 112 1211" fill="none" preserveAspectRatio="xMidYMax meet">
-          <path 
-            ref={pathRef} 
-            style={{ visibility: 'hidden' }}
-            d="M56.5 0.5V555.5C59.8333 551.667 66.8 544.2 68 545C69.2 545.8 66.8333 550 65.5 552C73.3333 549 88.5 543.9 86.5 547.5C84.5 551.1 80.3333 558 78.5 561C84.3333 557.833 96.1 551.8 96.5 553C96.9 554.2 93 560.833 91 564C91 564 102 556 103.5 557C105 558 99 570 99 570C103.167 571.833 111.4 578.5 111 590.5C111 592.1 104.667 591.167 101.5 590.5L111 606C109.167 605.833 105.4 605.2 105 604C104.5 602.5 107 628.5 103.5 626.5C100.7 624.9 100 623.167 100 622.5C98.6667 630.667 95.4 646.7 93 645.5C90.6 644.3 89.6667 641 89.5 639.5C86 646.833 78 660.6 74 657C72.8 656.2 73.5 653.333 74 652L62.5 660.5C61.8333 662.333 60.2 665.9 59 665.5C57.8 665.1 49.1667 658 45 654.5C45.3333 656 45.5 658.8 43.5 658C41 657 32.5 647.5 32 646.5C31.6667 648.167 30.5 651 28.5 649C26 646.5 16.5 637 17.5 633.5C17.5 632 11 637.5 10.5 634.5C10 631.5 10 613 11 612C12 611 3.5 621 4 616C4.5 611 5.5 593.5 9 592.5C9.5 592 1 594 2.5 591.5C4 589 5.5 571 14 572.5C15 572.5 6 560.5 9 559.5C13.5 560.667 22.7 562.8 23.5 562C24.5 561 16 553 19.5 552C23 551 30.5 556.5 32 555.5C33.5 554.5 50.5 555 56.5 562.5V658V821V1211" 
-            stroke="#33F0CE" 
-            strokeWidth="3"
-          />
-        </svg>       
-      </div>
-    </>
-  );
-
-  const Navigation = () => {
-    const pathname = usePathname();
-    return (
-      <nav className="support-nav" style={{ position: "fixed", display: "flex", gap: "0.5rem"}}>
-        {pathname === '/' ? (
-          <>
-            <Link href="/apps" className="support-link">Our Apps</Link>
-            <Link href="/support" className="support-link">Support</Link>
-            <Link href="/privacy" className="support-link">Privacy</Link>
-            <Link href="/terms" className="support-link">Terms</Link>
-          </>
-        ) : pathname === '/support' ? (
-          <>
-            <Link href="/" className="support-link">Home</Link>
-            <Link href="/apps" className="support-link">Our Apps</Link>
-            <Link href="/privacy" className="support-link">Privacy</Link>
-            <Link href="/terms" className="support-link">Terms</Link>
-          </>
-        ) : pathname === '/privacy' ? (
-          <>
-            <Link href="/" className="support-link">Home</Link>
-            <Link href="/apps" className="support-link">Our Apps</Link>
-            <Link href="/support" className="support-link">Support</Link>
-            <Link href="/terms" className="support-link">Terms</Link>
-          </>
-        ) : pathname === '/terms' ? (
-          <>
-            <Link href="/" className="support-link">Home</Link>
-            <Link href="/apps" className="support-link">Our Apps</Link>
-            <Link href="/support" className="support-link">Support</Link>
-            <Link href="/privacy" className="support-link">Privacy</Link>
-          </>
-        ) : (
-          <>
-            <Link href="/" className="support-link">Home</Link>
-            <Link href="/apps" className="support-link">Our Apps</Link>
-            <Link href="/support" className="support-link">Support</Link>
-            <Link href="/privacy" className="support-link">Privacy</Link>
-            <Link href="/terms" className="support-link">Terms</Link>
-          </>
-        )}
-      </nav>
-    );
-  };
-
-  if (!isMounted) {
-    return null; // or a loading state
-  }
-
   return (
-    <div className="App home-scroll">
-      <Navigation />
-      <MainContent />
+    <div className="App">
+      <SiteNav current="/" />
+      <ScrollLine />
+
+      <main className="relative z-10">
+        {/* ============================ Hero ============================ */}
+        <section className="mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center px-6 py-24">
+          <Image
+            src={logoGif}
+            alt="BitLion"
+            priority
+            sizes="(max-width: 768px) 88vw, 640px"
+            className="mx-auto h-auto w-full max-w-[640px]"
+          />
+
+          <h1 className="mt-10 text-3xl font-bold leading-tight text-white md:text-5xl">
+            BitLion builds mobile apps, web services, and browser extensions.
+          </h1>
+
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-gray-300 md:text-xl">
+            {SITE_DESCRIPTION}
+          </p>
+
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href="/apps"
+              className="rounded-lg bg-[#33F0CE] px-6 py-3 font-semibold text-black transition-colors duration-200 hover:bg-[#2cd9b9]"
+            >
+              See our apps
+            </Link>
+            <Link
+              href="/support"
+              className="rounded-lg border border-[#33F0CE] px-6 py-3 font-semibold text-[#33F0CE] transition-colors duration-200 hover:bg-[#33F0CE] hover:text-black"
+            >
+              Get in touch
+            </Link>
+          </div>
+        </section>
+
+        {/* ========================== What we make ========================== */}
+        <section
+          id="services"
+          aria-labelledby="services-heading"
+          className="mx-auto max-w-6xl px-6 py-24"
+        >
+          <h2
+            id="services-heading"
+            className="text-center text-3xl font-bold text-[#33F0CE] md:text-4xl"
+          >
+            What we make
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-gray-400">
+            Three kinds of product, all designed, built, and supported in house.
+          </p>
+
+          <ul className="mt-12 grid list-none gap-8 p-0 md:grid-cols-3">
+            {SERVICES.map((service) => (
+              <li
+                key={service.id}
+                className="flex flex-col rounded-2xl border border-gray-800 bg-gray-900 p-8 text-left"
+              >
+                <h3 className="text-2xl font-bold text-white">{service.name}</h3>
+                <p className="mt-1 text-sm font-medium uppercase tracking-wide text-[#33F0CE]">
+                  {service.tagline}
+                </p>
+                <p className="mt-4 flex-1 leading-relaxed text-gray-300">
+                  {service.description}
+                </p>
+                <p className="mt-6 text-sm text-gray-400">
+                  <span className="font-semibold text-gray-300">Includes: </span>
+                  {service.products.join(', ')}
+                </p>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-12 text-center">
+            <Link href="/apps" className="text-[#33F0CE] hover:underline">
+              Browse everything we ship &rarr;
+            </Link>
+          </div>
+        </section>
+
+        {/* =========================== Contact =========================== */}
+        <section
+          id="contact"
+          aria-labelledby="contact-heading"
+          className="mx-auto max-w-3xl px-6 py-24 text-center"
+        >
+          <h2
+            id="contact-heading"
+            className="text-3xl font-bold text-[#33F0CE] md:text-4xl"
+          >
+            Get in touch
+          </h2>
+          <p className="mt-6 text-lg leading-relaxed text-gray-300">
+            Questions about one of our apps, a bug to report, or a privacy
+            request? Send us a message and we will get back to you.
+          </p>
+
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href="/support"
+              className="rounded-lg bg-[#33F0CE] px-6 py-3 font-semibold text-black transition-colors duration-200 hover:bg-[#2cd9b9]"
+            >
+              Contact support
+            </Link>
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="rounded-lg border border-[#33F0CE] px-6 py-3 font-semibold text-[#33F0CE] transition-colors duration-200 hover:bg-[#33F0CE] hover:text-black"
+            >
+              {CONTACT_EMAIL}
+            </a>
+          </div>
+        </section>
+
+        {/* ============================ Footer ============================ */}
+        <footer className="border-t border-gray-800 px-6 py-10 text-sm text-gray-400">
+          <nav aria-label="Footer" className="flex flex-wrap justify-center gap-6">
+            <Link href="/apps" className="hover:text-[#33F0CE]">
+              Our Apps
+            </Link>
+            <Link href="/support" className="hover:text-[#33F0CE]">
+              Support
+            </Link>
+            <Link href="/privacy" className="hover:text-[#33F0CE]">
+              Privacy
+            </Link>
+            <Link href="/terms" className="hover:text-[#33F0CE]">
+              Terms
+            </Link>
+          </nav>
+          <p className="mt-6">
+            &copy; {new Date().getFullYear()} {SITE_NAME}. All rights reserved.
+          </p>
+        </footer>
+      </main>
     </div>
   );
 }

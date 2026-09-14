@@ -1,24 +1,19 @@
-'use client'
+import SiteNav from '../components/SiteNav';
+import { buildMetadata } from '../lib/site';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+export const metadata = buildMetadata({
+  title: 'Privacy Policy',
+  description:
+    'How BitLion, LLC collects, uses, and protects your information ' +
+    'across our mobile apps, browser extensions, and web services, ' +
+    'with app-specific disclosures for each product.',
+  path: '/privacy',
+});
 
 export default function PrivacyPage() {
-  const Navigation = () => {
-    const pathname = usePathname();
-    return (
-      <nav className="support-nav" style={{ position: "fixed", display: "flex", gap: "0.5rem"}}>
-        <Link href="/" className="support-link">Home</Link>
-        <Link href="/apps" className="support-link">Our Apps</Link>
-        <Link href="/support" className="support-link">Support</Link>
-        <Link href="/terms" className="support-link">Terms</Link>
-      </nav>
-    );
-  };
-
   return (
     <div className="App">
-      <Navigation />
+      <SiteNav current="/privacy" />
       <div style={{ 
         maxWidth: "800px", 
         margin: "0 auto", 

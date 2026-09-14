@@ -1,24 +1,19 @@
-'use client'
-
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import SiteNav from '../components/SiteNav';
+import { buildMetadata } from '../lib/site';
+
+export const metadata = buildMetadata({
+  title: 'Terms of Service',
+  description:
+    'The Terms of Service governing your use of mobile applications, ' +
+    'browser extensions, and web services published by BitLion, LLC.',
+  path: '/terms',
+});
 
 export default function TermsPage() {
-  const Navigation = () => {
-    const pathname = usePathname();
-    return (
-      <nav className="support-nav" style={{ position: "fixed", display: "flex", gap: "0.5rem"}}>
-        <Link href="/" className="support-link">Home</Link>
-        <Link href="/apps" className="support-link">Our Apps</Link>
-        <Link href="/support" className="support-link">Support</Link>
-        <Link href="/privacy" className="support-link">Privacy</Link>
-      </nav>
-    );
-  };
-
   return (
     <div className="App">
-      <Navigation />
+      <SiteNav current="/terms" />
       <div style={{ 
         maxWidth: "800px", 
         margin: "0 auto", 

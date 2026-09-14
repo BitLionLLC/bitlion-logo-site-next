@@ -1,7 +1,7 @@
-'use client'
-
 import Image from 'next/image';
 import Link from 'next/link';
+import SiteNav from '../components/SiteNav';
+import { buildMetadata } from '../lib/site';
 import plantIdImage from '../assets/plantId.png';
 import slowpulseImage from '../assets/slowpulse.png';
 import medMinderImage from '../assets/medminder.png';
@@ -10,6 +10,15 @@ import autoDarkModeImage from '../assets/autodarkmode.png';
 import appStoreBadge from '../assets/app_store.svg';
 import googlePlayBadge from '../assets/google_play.png';
 import logoGif from '../assets/logo.gif';
+
+export const metadata = buildMetadata({
+  title: 'Our Apps',
+  description:
+    'Every product BitLion ships: Budget Plant ID, SlowPulse, and Med Minder ' +
+    'for iPhone and Android, the Mostlink web service, and the Auto Dark Mode ' +
+    'Chrome extension.',
+  path: '/apps',
+});
 
 function SectionHeading({ title, subtitle }) {
   return (
@@ -23,13 +32,7 @@ function SectionHeading({ title, subtitle }) {
 export default function AppsPage() {
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Navigation */}
-      <nav className="support-nav" style={{ position: "fixed", display: "flex", gap: "0.5rem"}}>
-        <Link href="/" className="support-link">Home</Link>
-        <Link href="/support" className="support-link">Support</Link>
-        <Link href="/privacy" className="support-link">Privacy</Link>
-        <Link href="/terms" className="support-link">Terms</Link>
-      </nav>
+      <SiteNav current="/apps" />
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-20">

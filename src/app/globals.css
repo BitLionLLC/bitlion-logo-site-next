@@ -29,17 +29,26 @@ body {
   background-color: black;
 }
 
+/* The home page's scroll-drawn line. Sits behind the page content, never
+   swallows clicks meant for the links layered on top of it, and is dimmed so
+   it reads as background texture rather than a scratch through the copy --
+   it used to draw on an otherwise empty page, where full strength was fine. */
 .line-container {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 0;
   width: 100%;
   height: 100%;
-  text-align: center;
   overflow: hidden;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0.3;
 }
 
-svg {
+/* Scoped to the line: as a bare `svg` selector this stretched every SVG on
+   the site to the full height of its container. */
+.line-container svg {
   display: inline-block;
   height: 100%;
 }
@@ -50,19 +59,20 @@ svg {
   min-height: 100vh;
 }
 
-/* Scroll runway for the home page line animation, which draws the SVG path
-   as a percentage of how far down the document you have scrolled. Scoped to
-   the home page — as a rule on `body` it gave every other page five
-   viewports of empty scroll below its content. Must outrank `.App` above. */
-.App.home-scroll {
-  min-height: 500vh;
-}
+/* The home page line animation draws the SVG path as a percentage of how far
+   down the document you have scrolled. Its runway used to be an artificial
+   `min-height: 500vh` on an otherwise empty page; the hero, services, and
+   contact sections now supply that scroll length with real content. */
 
 .support-nav {
   position: fixed;
   top: 1rem;
   right: 1rem;
   z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
 }
 
 .support-link {
@@ -78,4 +88,19 @@ svg {
 
 .support-link:hover {
   background-color: #2cd9b9;
+}
+
+/* At phone widths the five nav pills no longer fit on one row at full size,
+   so span the width and shrink them rather than wrapping onto a second. */
+@media (max-width: 480px) {
+  .support-nav {
+    left: 1rem;
+    justify-content: center;
+    gap: 0.375rem;
+  }
+
+  .support-link {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.8125rem;
+  }
 }
