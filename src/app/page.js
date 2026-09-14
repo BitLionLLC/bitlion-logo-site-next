@@ -1,6 +1,5 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import logoGif from './assets/logo.gif';
+import AnimatedWordmark from './components/AnimatedWordmark';
 import ScrollLine from './components/ScrollLine';
 import SiteNav from './components/SiteNav';
 import {
@@ -33,13 +32,7 @@ export default function Home() {
       <main className="relative z-10">
         {/* ============================ Hero ============================ */}
         <section className="mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center px-6 py-24">
-          <Image
-            src={logoGif}
-            alt="BitLion"
-            priority
-            sizes="(max-width: 768px) 88vw, 640px"
-            className="mx-auto h-auto w-full max-w-[640px]"
-          />
+          <AnimatedWordmark className="mx-auto w-full max-w-[640px]" />
 
           <h1 className="mt-10 text-3xl font-bold leading-tight text-white md:text-5xl">
             BitLion builds mobile apps, web services, and browser extensions.

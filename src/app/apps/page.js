@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import AnimatedWordmark from '../components/AnimatedWordmark';
 import SiteNav from '../components/SiteNav';
 import { buildMetadata } from '../lib/site';
 import plantIdImage from '../assets/plantId.png';
@@ -9,7 +10,6 @@ import mostlinkImage from '../assets/mostlink.png';
 import autoDarkModeImage from '../assets/autodarkmode.png';
 import appStoreBadge from '../assets/app_store.svg';
 import googlePlayBadge from '../assets/google_play.png';
-import logoGif from '../assets/logo.gif';
 
 export const metadata = buildMetadata({
   title: 'Our Apps',
@@ -39,7 +39,7 @@ export default function AppsPage() {
         {/* Header */}
         <div className="text-center mb-16">
           <div className="mb-8">
-            <Image src={logoGif} alt="BitLion Logo" className="mx-auto" width={120} height={120} />
+            <AnimatedWordmark className="mx-auto w-full max-w-[240px]" />
           </div>
           <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white">
             Our Apps
