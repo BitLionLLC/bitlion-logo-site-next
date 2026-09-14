@@ -1,6 +1,11 @@
-import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 import { NextResponse } from 'next/server';
 import { clientIpFrom, verifyRecaptcha } from '../../lib/recaptcha';
+import { MAIL_FROM, MAIL_TO, getTransport } from '../../lib/mailer';
+
+// nodemailer opens raw TCP sockets, which the Edge runtime cannot do. Next
+// already defaults route handlers to Node, but pin it so a future default
+// change cannot silently break sending.
+export const runtime = 'nodejs';
 
 // Everything in the payload is attacker-controlled, so escape it before it
 // goes anywhere near the HTML body of the email.
@@ -11,6 +16,13 @@ function escapeHtml(value) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
+}
+
+// A newline in a header value lets a submitter append headers of their own
+// (Bcc, say). Subject and the reply-to display name are the fields that
+// reach headers, so strip line breaks from both.
+function singleLine(value) {
+  return String(value).replace(/[\r\n]+/g, ' ').trim();
 }
 
 export async function POST(request) {
@@ -42,35 +54,40 @@ export async function POST(request) {
       );
     }
 
-    const mailerSend = new MailerSend({
-      apiKey: process.env.MAILERSEND_API_KEY,
-    });
+    const transportResult = getTransport();
+    if (!transportResult.ok) {
+      console.error(
+        `SMTP is not configured; missing ${transportResult.missing.join(', ')}.`
+      );
+      return NextResponse.json(
+        { success: false, message: 'Email is not configured. Please email us directly.' },
+        { status: 500 }
+      );
+    }
 
-    const sentFrom = new Sender("noreply@thebitlion.com", name);
-    const recipients = [
-      new Recipient("grant@thebitlion.com", "BitLion Support")
-    ];
-
-    const emailParams = new EmailParams()
-      .setFrom(sentFrom)
-      .setTo(recipients)
-      .setReplyTo(new Sender(email, name))
-      .setSubject(`Support Request: ${subject}`)
-      .setHtml(`
+    await transportResult.transport.sendMail({
+      from: { name: 'BitLion Support Form', address: MAIL_FROM },
+      to: MAIL_TO,
+      // Send from our own domain and put the submitter in Reply-To: mail sent
+      // as them would fail the sender domain's SPF/DKIM and land in spam.
+      replyTo: { name: singleLine(name), address: email },
+      subject: `Support Request: ${singleLine(subject)}`,
+      text: [
+        'New Support Request',
+        `From: ${name} (${email})`,
+        `Subject: ${subject}`,
+        '',
+        message,
+      ].join('\n'),
+      html: `
         <h2>New Support Request</h2>
         <p><strong>From:</strong> ${escapeHtml(name)} (${escapeHtml(email)})</p>
         <p><strong>Subject:</strong> ${escapeHtml(subject)}</p>
         <p><strong>Message:</strong></p>
-        <p>${escapeHtml(message)}</p>
-      `)
-      .setText(`
-        New Support Request
-        From: ${name} (${email})
-        Subject: ${subject}
-        Message: ${message}
-      `);
+        <p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>
+      `,
+    });
 
-    await mailerSend.email.send(emailParams);
     return NextResponse.json({ success: true, message: 'Email sent successfully' });
   } catch (error) {
     console.error('Error sending email:', error);
